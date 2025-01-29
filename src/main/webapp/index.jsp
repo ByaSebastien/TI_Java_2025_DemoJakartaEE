@@ -10,5 +10,6 @@
 <br/>
 <a href="midi">On va prendre la pause</a>
 <a href="demo?id=42&name=toto">On veut toto</a>
+<a href="book/details?isbn=123">Livre</a>
 </body>
 </html>
