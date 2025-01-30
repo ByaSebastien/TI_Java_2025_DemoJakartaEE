@@ -2,6 +2,8 @@ package be.bstorm.demojakartaee.servlets;
 
 import be.bstorm.demojakartaee.entities.Book;
 import be.bstorm.demojakartaee.models.BookSimpleDTO;
+import be.bstorm.demojakartaee.repositories.BookRepository;
+import be.bstorm.demojakartaee.repositories.impls.BookRepositoryImpl;
 import be.bstorm.demojakartaee.services.BookService;
 import be.bstorm.demojakartaee.services.impls.BookServiceImpl;
 import jakarta.servlet.ServletException;
@@ -28,10 +30,12 @@ public class BookIndexServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         List<Book> books = bookService.findAll();
+
 //        List<BookSimpleDTO> dtos = new ArrayList<>();
 //        for (Book book : books) {
 //            dtos.add(BookSimpleDTO.fromBook(book));
 //        }
+
         List<BookSimpleDTO> dtos = books.stream()
                 .map(b -> BookSimpleDTO.fromBook(b))
                 .collect(Collectors.toList());

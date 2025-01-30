@@ -1,13 +1,17 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
+    <%@include file="/import/import.jsp" %>
     <title>Book Index</title>
 </head>
-<body>
-<%@include file="/layout/header.jsp"%>
+<%--<jsp:include page="/layout/header.jsp">--%>
+<%--    <jsp:param name="title" value="Titre dynamique"/>--%>
+<%--</jsp:include>--%>
+<%@include file="/layout/header.jsp" %>
 <main>
+    <a href="/book/create">Creer</a>
     <table>
         <thead>
         <tr>
@@ -41,6 +45,6 @@
         </tbody>
     </table>
 </main>
-<%@include file="/layout/footer.jsp"%>
+<%@include file="/layout/footer.jsp" %>
 </body>
 </html>
