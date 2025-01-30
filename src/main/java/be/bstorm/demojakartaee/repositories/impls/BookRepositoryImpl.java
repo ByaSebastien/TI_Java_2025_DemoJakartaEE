@@ -7,6 +7,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
+import java.util.List;
 import java.util.Optional;
 
 public class BookRepositoryImpl implements BookRepository {
@@ -15,6 +16,13 @@ public class BookRepositoryImpl implements BookRepository {
 
     public BookRepositoryImpl() {
         emf = EmfFactoryUtils.getEmfFactory();
+    }
+
+    @Override
+    public List<Book> findAll() {
+        try(EntityManager em = emf.createEntityManager()) {
+            return em.createQuery("select b from Book b", Book.class).getResultList();
+        }
     }
 
     @Override

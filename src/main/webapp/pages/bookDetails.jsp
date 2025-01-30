@@ -5,8 +5,17 @@
     <title>Book details</title>
 </head>
 <body>
-<h1>ISBN : ${book.isbn}</h1>
-<h1>Titre : ${book.title}</h1>
-<h1>Auteur : ${book.author}</h1>
+<header>
+    <h1>Happy Library</h1>
+</header>
+<main>
+    <h1>ISBN : ${book.isbn}</h1>
+    <h1>Titre : ${book.title}</h1>
+    <h1>Auteur : ${book.author}</h1>
+    <h1>Description : ${book.description}</h1>
+</main>
+<footer>
+    <p>© Les bests java</p>
+</footer>
 </body>
 </html>

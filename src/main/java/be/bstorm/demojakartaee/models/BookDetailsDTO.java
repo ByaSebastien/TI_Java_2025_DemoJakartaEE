@@ -12,10 +12,11 @@ public class BookDetailsDTO {
     private String isbn;
     private String title;
     private String author;
+    private String description;
 
     // Mapper
     public static BookDetailsDTO fromBook(Book book) {
-        return new BookDetailsDTO(book.getIsbn(), book.getTitle(), book.getAuthor());
+        return new BookDetailsDTO(book.getIsbn(), book.getTitle(), book.getAuthor(),book.getDescription());
     }
 
 //    public Book toBook() {
