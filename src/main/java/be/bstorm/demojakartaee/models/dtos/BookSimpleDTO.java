@@ -1,4 +1,4 @@
-package be.bstorm.demojakartaee.models;
+package be.bstorm.demojakartaee.models.dtos;
 
 import be.bstorm.demojakartaee.entities.Book;
 import lombok.AllArgsConstructor;

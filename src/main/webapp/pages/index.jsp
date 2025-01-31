@@ -39,6 +39,13 @@
                     <button>
                         <a href="/book/details?isbn=${book.isbn}">Details</a>
                     </button>
+                    <button>
+                        <a href="/book/update?isbn=${book.isbn}">Update</a>
+                    </button>
+                    <form action="${pageContext.request.contextPath}/book/delete" method="post">
+                        <input type="text" hidden="hidden" name="isbn" value="${book.isbn}">
+                        <button type="submit">Delete</button>
+                    </form>
                 </td>
             </tr>
         </c:forEach>
