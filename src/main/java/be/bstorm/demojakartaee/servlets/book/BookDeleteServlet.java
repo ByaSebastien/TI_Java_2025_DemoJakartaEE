@@ -10,7 +10,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet("/book/delete")
+@WebServlet("/admin/book/delete")
 public class BookDeleteServlet extends HttpServlet {
 
     @Inject

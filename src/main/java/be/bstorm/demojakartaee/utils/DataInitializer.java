@@ -1,9 +1,13 @@
 package be.bstorm.demojakartaee.utils;
 
 import be.bstorm.demojakartaee.entities.Book;
+import be.bstorm.demojakartaee.entities.User;
 import be.bstorm.demojakartaee.repositories.impls.BookRepositoryImpl;
+import be.bstorm.demojakartaee.repositories.impls.UserRepositoryImpl;
 import be.bstorm.demojakartaee.services.BookService;
+import be.bstorm.demojakartaee.services.UserService;
 import be.bstorm.demojakartaee.services.impls.BookServiceImpl;
+import be.bstorm.demojakartaee.services.impls.UserServiceImpl;
 import jakarta.servlet.ServletContextEvent;
 import jakarta.servlet.ServletContextListener;
 import jakarta.servlet.annotation.WebListener;
@@ -14,14 +18,22 @@ import java.util.List;
 public class DataInitializer implements ServletContextListener {
 
     private final BookService bookService;
+    private final UserService userService;
 
 
     public DataInitializer() {
         this.bookService = new BookServiceImpl(new BookRepositoryImpl());
+        this.userService = new UserServiceImpl(new UserRepositoryImpl());
     }
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
+
+        User admin = new User("admin", "admin", "admin");
+        User user = new User("user", "user", "user");
+
+        userService.Register(admin);
+        userService.Register(user);
 
         List<Book> books = List.of(
                 new Book("978-0-123456-47-2", "Spring Boot Basics", "John Doe", "Introduction à Spring Boot"),

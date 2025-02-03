@@ -11,7 +11,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet("/book/update")
+@WebServlet("/admin/book/update")
 public class BookUpdateServlet extends HttpServlet {
 
     @Inject

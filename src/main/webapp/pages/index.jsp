@@ -11,7 +11,18 @@
 <%--</jsp:include>--%>
 <%@include file="/layout/header.jsp" %>
 <main>
-    <a href="/book/create">Creer</a>
+    <c:if test="${currentUser == null}">
+        <a href="/register">register</a>
+        <a href="/login">login</a>
+    </c:if>
+    <c:if test="${currentUser != null && currentUser.role.equals('admin')}">
+        <a href="/admin/book/create">Creer</a>
+    </c:if>
+    <c:if test="${currentUser != null}">
+        <form action="${pageContext.request.contextPath}/logout" method="post">
+            <button type="submit">Logout</button>
+        </form>
+    </c:if>
     <table>
         <thead>
         <tr>
@@ -39,13 +50,15 @@
                     <button>
                         <a href="/book/details?isbn=${book.isbn}">Details</a>
                     </button>
-                    <button>
-                        <a href="/book/update?isbn=${book.isbn}">Update</a>
-                    </button>
-                    <form action="${pageContext.request.contextPath}/book/delete" method="post">
-                        <input type="text" hidden="hidden" name="isbn" value="${book.isbn}">
-                        <button type="submit">Delete</button>
-                    </form>
+                    <c:if test="${currentUser != null && currentUser.role.equals('admin')}">
+                        <button>
+                            <a href="/admin/book/update?isbn=${book.isbn}">Update</a>
+                        </button>
+                        <form action="${pageContext.request.contextPath}/admin/book/delete" method="post">
+                            <input type="text" hidden="hidden" name="isbn" value="${book.isbn}">
+                            <button type="submit">Delete</button>
+                        </form>
+                    </c:if>
                 </td>
             </tr>
         </c:forEach>
