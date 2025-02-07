@@ -1,6 +1,7 @@
 package be.bstorm.demojakartaee.servlets.auth;
 
 import be.bstorm.demojakartaee.entities.User;
+import be.bstorm.demojakartaee.models.dtos.UserDTO;
 import be.bstorm.demojakartaee.services.UserService;
 import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;
@@ -30,7 +31,7 @@ public class LoginServlet extends HttpServlet {
 
         try {
             User user = userService.Login(username, password);
-            req.getSession(true).setAttribute("currentUser", user);
+            req.getSession(true).setAttribute("currentUser", UserDTO.fromUser(user));
             resp.sendRedirect(req.getContextPath() + "/");
         } catch (Exception e) {
             System.out.println(e.getMessage());

@@ -42,4 +42,9 @@ public class UserServiceImpl implements UserService, Serializable {
         }
         return user;
     }
+
+    @Override
+    public User loadUserByUsername(String username) {
+        return userRepository.findByUsername(username).orElseThrow();
+    }
 }
